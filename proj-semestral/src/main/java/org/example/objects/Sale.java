@@ -1,4 +1,4 @@
-package org.example.Objects;
+package org.example.objects;
 
 public class Sale {
   private final int id;

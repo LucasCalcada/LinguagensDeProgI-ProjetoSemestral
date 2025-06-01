@@ -1,10 +1,10 @@
-package org.example.Database;
+package org.example.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.example.Environment.Environment;
+import org.example.environment.Environment;
 
 public class DbConnector {
   public static DbConnector Instance;

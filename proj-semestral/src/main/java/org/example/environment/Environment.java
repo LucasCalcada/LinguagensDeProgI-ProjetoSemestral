@@ -1,4 +1,4 @@
-package org.example.Environment;
+package org.example.environment;
 
 public class Environment {
   public static Environment Instance;

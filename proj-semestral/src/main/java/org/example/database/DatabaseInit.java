@@ -1,10 +1,10 @@
-package org.example.Database;
+package org.example.database;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import org.example.Utils.ResourceLoader;
+import org.example.utils.ResourceLoader;
 
 public class DatabaseInit {
   public static void InitializeDatabase() throws SQLException {

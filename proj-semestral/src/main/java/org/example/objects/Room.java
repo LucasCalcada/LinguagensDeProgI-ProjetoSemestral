@@ -1,4 +1,4 @@
-package org.example.Objects;
+package org.example.objects;
 
 public class Room {
   public enum RoomStatus {
