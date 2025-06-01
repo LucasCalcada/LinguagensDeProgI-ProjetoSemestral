@@ -6,6 +6,8 @@ services:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${USER_PASSWD}
+    ports:
+      - ${DB_PORT}:3306
   db-dashboard:
     image: adminer
     ports:
