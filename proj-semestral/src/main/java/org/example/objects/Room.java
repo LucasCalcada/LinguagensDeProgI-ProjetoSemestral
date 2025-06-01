@@ -7,24 +7,18 @@ public class Room {
     MAINTENANCE
   }
 
-  private final int id;
   private String roomName;
   private int dailyRate;
   private int singleBedCount;
   private int doubleBedCount;
   private RoomStatus status;
 
-  public Room(int id, String roomName, int dailyRate, int singleBedCount, int doubleBedCount, RoomStatus status) {
-    this.id = id;
+  public Room(String roomName, int dailyRate, int singleBedCount, int doubleBedCount, RoomStatus status) {
     this.roomName = roomName;
     this.dailyRate = dailyRate;
     this.singleBedCount = singleBedCount;
     this.doubleBedCount = doubleBedCount;
     this.status = status;
-  }
-
-  public int getId() {
-    return id;
   }
 
   public String getRoomName() {

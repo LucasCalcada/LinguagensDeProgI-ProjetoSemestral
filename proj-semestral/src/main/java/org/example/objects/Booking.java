@@ -3,8 +3,7 @@ package org.example.objects;
 import java.sql.Date;
 
 public class Booking {
-  private final int id;
-  private int room;
+  private int roomId;
   private String bookerName;
   private String bookerCpf;
   private String bookerPhone;
@@ -12,10 +11,15 @@ public class Booking {
   private java.sql.Date bookingStart;
   private java.sql.Date bookingEnd;
 
-  public Booking(int id, int room, String bookerName, String bookerCpf, String bookerPhone, int clientCount,
-      Date bookingStart, Date bookingEnd) {
-    this.id = id;
-    this.room = room;
+  public Booking(
+      int roomId,
+      String bookerName,
+      String bookerCpf,
+      String bookerPhone,
+      int clientCount,
+      Date bookingStart,
+      Date bookingEnd) {
+    this.roomId = roomId;
     this.bookerName = bookerName;
     this.bookerCpf = bookerCpf;
     this.bookerPhone = bookerPhone;
@@ -24,16 +28,12 @@ public class Booking {
     this.bookingEnd = bookingEnd;
   }
 
-  public int getId() {
-    return id;
-  }
-
   public int getRoom() {
-    return room;
+    return roomId;
   }
 
-  public void setRoom(int room) {
-    this.room = room;
+  public void setRoom(int roomId) {
+    this.roomId = roomId;
   }
 
   public String getBookerName() {

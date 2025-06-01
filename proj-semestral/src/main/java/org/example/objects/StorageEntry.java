@@ -6,20 +6,14 @@ public class StorageEntry {
     OUT
   };
 
-  private final int id;
   private int productId;
   private EntryType entryType;
   private int amount;
 
-  public StorageEntry(int id, int productId, EntryType entryType, int amount) {
-    this.id = id;
+  public StorageEntry(int productId, EntryType entryType, int amount) {
     this.productId = productId;
     this.entryType = entryType;
     this.amount = amount;
-  }
-
-  public int getId() {
-    return id;
   }
 
   public int getProductId() {

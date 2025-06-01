@@ -1,22 +1,16 @@
 package org.example.objects;
 
 public class Sale {
-  private final int id;
   private int productId;
   private int amount;
   private int price;
   private int bookingId;
 
-  public Sale(int id, int productId, int amount, int price, int bookingId) {
-    this.id = id;
+  public Sale(int productId, int amount, int price, int bookingId) {
     this.productId = productId;
     this.amount = amount;
     this.price = price;
     this.bookingId = bookingId;
-  }
-
-  public int getId() {
-    return id;
   }
 
   public int getProductId() {

@@ -1,20 +1,14 @@
 package org.example.objects;
 
 public class Product {
-  private final int id;
   private String productName;
   private int sellPrice;
   private boolean active;
 
-  public Product(int id, String productName, int sellPrice, boolean active) {
-    this.id = id;
+  public Product(String productName, int sellPrice, boolean active) {
     this.productName = productName;
     this.sellPrice = sellPrice;
     this.active = active;
-  }
-
-  public int getId() {
-    return id;
   }
 
   public String getProductName() {
