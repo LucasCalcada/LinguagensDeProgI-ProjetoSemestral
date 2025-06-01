@@ -14,7 +14,7 @@ public class Environment {
     this.dbAddress = System.getenv("DB_ADDRESS");
     this.dbPort = System.getenv("DB_PORT");
     this.dbUser = System.getenv("DB_USER");
-    this.dbPasswd = System.getenv("DB_PASSWORD");
+    this.dbPasswd = System.getenv("USER_PASSWD");
   }
 
   public static Environment getInstance() {
