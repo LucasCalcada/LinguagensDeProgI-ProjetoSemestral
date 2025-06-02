@@ -61,8 +61,23 @@ public class RoomOperations extends Operation<Room> {
 
   @Override
   public DbEntity<Room> update(int id, Room data) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    String sql = "UPDATE rooms SET room_name = ?, daily_rate = ?, single_bed_count = ?, double_bed_count = ?, status = ? WHERE id = ?";
+    try {
+      // Constrói a query
+      PreparedStatement stm = conn.prepareStatement(sql);
+      stm.setString(1, data.getRoomName());
+      stm.setInt(2, data.getDailyRate());
+      stm.setInt(3, data.getSingleBedCount());
+      stm.setInt(4, data.getDoubleBedCount());
+      stm.setString(5, data.getStatus().name());
+      stm.setInt(6, id);
+
+      stm.executeUpdate();
+
+      return read(id);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

@@ -59,8 +59,21 @@ public class StorageOperations extends Operation<StorageEntry> {
 
   @Override
   public DbEntity<StorageEntry> update(int id, StorageEntry data) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    String sql = "UPDATE storage_entries SET product = ?, amount = ?, price = ? WHERE id = ?";
+    try {
+      // Constrói a query
+      PreparedStatement stm = conn.prepareStatement(sql);
+      stm.setInt(1, data.getProductId());
+      stm.setInt(2, data.getAmount());
+      stm.setString(3, data.getEntryType().name());
+      stm.setInt(4, id);
+
+      stm.executeUpdate();
+
+      return read(id);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

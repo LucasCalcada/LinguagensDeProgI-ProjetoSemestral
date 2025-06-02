@@ -58,8 +58,21 @@ public class ProductOperations extends Operation<Product> {
 
   @Override
   public DbEntity<Product> update(int id, Product data) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    String sql = "UPDATE products SET product_name = ?, sell_price = ?, active = ? WHERE id = ?";
+    try {
+      // Constrói a query
+      PreparedStatement stm = conn.prepareStatement(sql);
+      stm.setString(1, data.getProductName());
+      stm.setInt(2, data.getSellPrice());
+      stm.setBoolean(3, data.isActive());
+      stm.setInt(4, id);
+
+      stm.executeUpdate();
+
+      return read(id);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override

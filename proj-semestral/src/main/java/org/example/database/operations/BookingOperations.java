@@ -62,8 +62,25 @@ public class BookingOperations extends Operation<Booking> {
 
   @Override
   public DbEntity<Booking> update(int id, Booking data) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+    String sql = "UPDATE bookings SET room = ?, booker_name = ?, booker_cpf = ?, booker_phone = ?, client_count = ?, booking_start = ?, booking_end = ? WHERE id = ?";
+    try {
+      // Constrói a query
+      PreparedStatement stm = conn.prepareStatement(sql);
+      stm.setInt(1, data.getRoom());
+      stm.setString(2, data.getBookerName());
+      stm.setString(3, data.getBookerCpf());
+      stm.setString(4, data.getBookerPhone());
+      stm.setInt(5, data.getClientCount());
+      stm.setDate(6, data.getBookingStart());
+      stm.setDate(7, data.getBookingEnd());
+      stm.setInt(8, id);
+
+      stm.executeUpdate();
+
+      return read(id);
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   @Override
