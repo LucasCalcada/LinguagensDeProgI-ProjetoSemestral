@@ -10,6 +10,10 @@ public class StorageEntry extends DataObject {
   private EntryType entryType;
   private int amount;
 
+  public StorageEntry() {
+    super();
+  }
+
   public StorageEntry(int productId, EntryType entryType, int amount) {
     this.productId = productId;
     this.entryType = entryType;

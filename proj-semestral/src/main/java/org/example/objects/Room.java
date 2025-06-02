@@ -13,6 +13,10 @@ public class Room extends DataObject {
   private int doubleBedCount;
   private RoomStatus status;
 
+  public Room() {
+    super();
+  }
+
   public Room(String roomName, int dailyRate, int singleBedCount, int doubleBedCount, RoomStatus status) {
     this.roomName = roomName;
     this.dailyRate = dailyRate;

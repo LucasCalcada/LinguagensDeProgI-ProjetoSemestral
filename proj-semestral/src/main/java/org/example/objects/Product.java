@@ -5,6 +5,10 @@ public class Product extends DataObject {
   private int sellPrice;
   private boolean active;
 
+  public Product() {
+    super();
+  }
+
   public Product(String productName, int sellPrice, boolean active) {
     this.productName = productName;
     this.sellPrice = sellPrice;

@@ -13,6 +13,10 @@ public class Sale extends DataObject {
     this.bookingId = bookingId;
   }
 
+  public Sale() {
+    super();
+  }
+
   public int getProductId() {
     return productId;
   }

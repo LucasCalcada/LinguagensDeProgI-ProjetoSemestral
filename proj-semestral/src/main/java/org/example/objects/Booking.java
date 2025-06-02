@@ -11,6 +11,10 @@ public class Booking extends DataObject {
   private java.sql.Date bookingStart;
   private java.sql.Date bookingEnd;
 
+  public Booking() {
+    super();
+  }
+
   public Booking(
       int roomId,
       String bookerName,
