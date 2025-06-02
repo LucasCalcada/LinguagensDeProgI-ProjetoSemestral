@@ -7,7 +7,7 @@ import java.sql.Statement;
 import org.example.database.entities.DbEntity;
 import org.example.objects.Sale;
 
-public class SaleOperations extends Operation implements IOperation<Sale> {
+public class SaleOperations extends Operation<Sale> {
   @Override
   public DbEntity<Sale> create(Sale data) {
     String sql = "INSERT INTO sales (product, amount, price, booking) VALUES (?, ?, ?, ?)";

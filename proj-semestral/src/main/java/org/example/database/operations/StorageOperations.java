@@ -8,7 +8,7 @@ import org.example.database.entities.DbEntity;
 import org.example.objects.StorageEntry;
 import org.example.objects.StorageEntry.EntryType;;
 
-public class StorageOperations extends Operation implements IOperation<StorageEntry> {
+public class StorageOperations extends Operation<StorageEntry> {
   @Override
   public DbEntity<StorageEntry> create(StorageEntry data) {
     String sql = "INSERT INTO storage_entries (product, amount, price) VALUES (?, ?, ?)";

@@ -8,7 +8,7 @@ import org.example.database.entities.DbEntity;
 import org.example.objects.Room;
 import org.example.objects.Room.RoomStatus;
 
-public class RoomOperations extends Operation implements IOperation<Room> {
+public class RoomOperations extends Operation<Room> {
   @Override
   public DbEntity<Room> create(Room data) {
     String sql = "INSERT INTO rooms (room_name, daily_rate, single_bed_count, double_bed_count, status) VALUES (?, ?, ?, ?, ?)";
