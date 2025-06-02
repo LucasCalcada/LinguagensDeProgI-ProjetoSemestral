@@ -7,7 +7,6 @@ import java.sql.Statement;
 import org.example.database.entities.DbEntity;
 import org.example.database.mappers.StorageEntryMapper;
 import org.example.objects.StorageEntry;
-import org.example.objects.StorageEntry.EntryType;;
 
 public class StorageOperations extends Operation<StorageEntry> {
   @Override

@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import org.example.database.entities.DbEntity;
 import org.example.database.mappers.RoomMapper;
 import org.example.objects.Room;
-import org.example.objects.Room.RoomStatus;
 
 public class RoomOperations extends Operation<Room> {
   @Override
