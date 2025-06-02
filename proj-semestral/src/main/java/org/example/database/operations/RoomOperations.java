@@ -81,7 +81,13 @@ public class RoomOperations extends Operation<Room> {
 
   @Override
   public void delete(int id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    String sql = "DELETE FROM rooms WHERE id = ?";
+    try {
+      PreparedStatement stm = conn.prepareStatement(sql);
+      stm.setInt(1, id);
+      stm.executeUpdate();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 }
