@@ -1,6 +1,6 @@
 package org.example.objects;
 
-public class StorageEntry {
+public class StorageEntry extends DataObject {
   public enum EntryType {
     IN,
     OUT

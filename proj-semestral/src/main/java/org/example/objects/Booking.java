@@ -2,7 +2,7 @@ package org.example.objects;
 
 import java.sql.Date;
 
-public class Booking {
+public class Booking extends DataObject {
   private int roomId;
   private String bookerName;
   private String bookerCpf;

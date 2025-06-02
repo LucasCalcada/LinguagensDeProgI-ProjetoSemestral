@@ -1,6 +1,6 @@
 package org.example.objects;
 
-public class Product {
+public class Product extends DataObject {
   private String productName;
   private int sellPrice;
   private boolean active;

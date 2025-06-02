@@ -1,6 +1,8 @@
 package org.example.database.entities;
 
-public class DbEntity<T> {
+import org.example.objects.DataObject;
+
+public class DbEntity<T extends DataObject> {
   private final int id;
   private final T data;
 

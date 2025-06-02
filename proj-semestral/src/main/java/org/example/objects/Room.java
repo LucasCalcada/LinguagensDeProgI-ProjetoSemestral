@@ -1,6 +1,6 @@
 package org.example.objects;
 
-public class Room {
+public class Room extends DataObject {
   public enum RoomStatus {
     FREE,
     OCCUPIED,
