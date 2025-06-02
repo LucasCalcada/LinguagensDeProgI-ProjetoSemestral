@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.example.database.entities.DbEntity;
+import org.example.database.mappers.BookingMapper;
 import org.example.objects.Booking;
 
 public class BookingOperations extends Operation<Booking> {
@@ -51,14 +52,7 @@ public class BookingOperations extends Operation<Booking> {
       }
 
       // Constrói o Booking a partir do resultado da query
-      Booking entry = new Booking();
-      entry.setRoom(rs.getInt("room"));
-      entry.setBookerName(rs.getString("booker_name"));
-      entry.setBookerCpf(rs.getString("booker_cpf"));
-      entry.setBookerPhone(rs.getString("booker_phone"));
-      entry.setClientCount(rs.getInt("client_count"));
-      entry.setBookingStart(rs.getDate("booking_start"));
-      entry.setBookingEnd(rs.getDate("booking_end"));
+      Booking entry = BookingMapper.Instance.map(rs);
 
       return new DbEntity<Booking>(id, entry);
     } catch (Exception e) {

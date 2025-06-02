@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.example.database.entities.DbEntity;
+import org.example.database.mappers.SaleMapper;
 import org.example.objects.Sale;
 
 public class SaleOperations extends Operation<Sale> {
@@ -48,11 +49,7 @@ public class SaleOperations extends Operation<Sale> {
       }
 
       // Constrói a Sale a partir do resultado da query
-      Sale entry = new Sale();
-      entry.setProductId(rs.getInt("product"));
-      entry.setAmount(rs.getInt("amount"));
-      entry.setPrice(rs.getInt("price"));
-      entry.setBookingId(rs.getInt("booking"));
+      Sale entry = SaleMapper.Instance.map(rs);
 
       return new DbEntity<Sale>(id, entry);
     } catch (Exception e) {

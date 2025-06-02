@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.example.database.entities.DbEntity;
+import org.example.database.mappers.ProductMapper;
 import org.example.objects.Product;
 
 public class ProductOperations extends Operation<Product> {
@@ -47,10 +48,7 @@ public class ProductOperations extends Operation<Product> {
       }
 
       // Constrói o Product a partir do resultado da query
-      Product entry = new Product();
-      entry.setProductName(rs.getString("product_name"));
-      entry.setSellPrice(rs.getInt("sell_price"));
-      entry.setActive(rs.getBoolean("active"));
+      Product entry = ProductMapper.Instance.map(rs);
 
       return new DbEntity<Product>(id, entry);
     } catch (Exception e) {

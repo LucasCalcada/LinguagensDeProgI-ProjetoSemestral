@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import org.example.database.entities.DbEntity;
+import org.example.database.mappers.StorageEntryMapper;
 import org.example.objects.StorageEntry;
 import org.example.objects.StorageEntry.EntryType;;
 
@@ -48,11 +49,7 @@ public class StorageOperations extends Operation<StorageEntry> {
       }
 
       // Constrói o StorageEntry a partir do resultado da query
-      StorageEntry entry = new StorageEntry();
-      entry.setProductId(rs.getInt("product"));
-      entry.setAmount(rs.getInt("amount"));
-      EntryType entryType = EntryType.valueOf(rs.getString("status"));
-      entry.setEntryType(entryType);
+      StorageEntry entry = StorageEntryMapper.Instance.map(rs);
 
       return new DbEntity<StorageEntry>(id, entry);
     } catch (Exception e) {

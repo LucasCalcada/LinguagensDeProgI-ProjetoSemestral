@@ -5,6 +5,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 import org.example.database.entities.DbEntity;
+import org.example.database.mappers.RoomMapper;
 import org.example.objects.Room;
 import org.example.objects.Room.RoomStatus;
 
@@ -50,12 +51,7 @@ public class RoomOperations extends Operation<Room> {
       }
 
       // Constrói a Room a partir do resultado da query
-      Room entry = new Room();
-      entry.setRoomName(rs.getString("room_name"));
-      entry.setDailyRate(rs.getInt("daily_rate"));
-      entry.setSingleBedCount(rs.getInt("single_bed_count"));
-      entry.setDoubleBedCount(rs.getInt("double_bed_count"));
-      entry.setStatus(RoomStatus.valueOf(rs.getString("status")));
+      Room entry = RoomMapper.Instance.map(rs);
 
       return new DbEntity<Room>(id, entry);
     } catch (Exception e) {
