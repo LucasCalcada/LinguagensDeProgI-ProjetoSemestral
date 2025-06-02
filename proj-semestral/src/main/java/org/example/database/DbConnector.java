@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import org.example.environment.Environment;
 
 public class DbConnector {
-  public static DbConnector Instance;
+  private static DbConnector Instance;
 
   public final Connection dbConnection;
 
