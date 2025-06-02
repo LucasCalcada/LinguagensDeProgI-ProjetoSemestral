@@ -5,7 +5,7 @@ import java.sql.Connection;
 import org.example.database.DbConnector;
 import org.example.objects.DataObject;
 
-public abstract class Operation<T extends DataObject> implements IOperation<T> {
+public abstract class Operation<T extends DataObject> implements ICrud<T> {
   protected Connection conn;
 
   public Operation() {
