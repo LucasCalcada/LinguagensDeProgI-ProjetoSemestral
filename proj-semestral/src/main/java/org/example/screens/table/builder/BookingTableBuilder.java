@@ -7,7 +7,7 @@ public class BookingTableBuilder implements ITableDataBuilder<Booking> {
   @Override
   public String[] dataObjectHeaders() {
     return new String[] {
-        "Id", "Hóspede", "CPF", "Telefone", "Nº Clientes", "Início Estadia", "Fim Estaida"
+        "Id", "Id Quarto", "Hóspede", "CPF", "Telefone", "Nº Clientes", "Início Estadia", "Fim Estaida"
     };
   }
 
