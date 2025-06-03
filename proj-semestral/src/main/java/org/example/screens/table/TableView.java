@@ -17,7 +17,6 @@ public class TableView {
     DefaultTableModel model = new DefaultTableModel(dataBuilder.dataObjectHeaders(), 0);
     for (DbEntity<T> d : data) {
       String[] row = dataBuilder.dataObjectToRow(d);
-      System.out.println(Arrays.toString(row));
       model.addRow(row);
     }
     return new JTable(model);
