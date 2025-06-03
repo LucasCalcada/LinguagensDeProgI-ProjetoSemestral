@@ -48,7 +48,7 @@ public class RoomPrompt implements IPrompt<Room> {
     double dailyRate = (int) Double.parseDouble(dailyRateField.getText()) * 100.0;
     int singleBedCount = Integer.parseInt(singleBedCountField.getText());
     int doubleBedCount = Integer.parseInt(doubleBedCountField.getText());
-    RoomStatus status = RoomStatus.valueOf(statusField.toString());
+    RoomStatus status = RoomStatus.valueOf(statusField.getText());
     return new Room(roomName, (int) dailyRate, singleBedCount, doubleBedCount, status);
   }
 }
