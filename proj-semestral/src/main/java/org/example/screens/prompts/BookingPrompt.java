@@ -4,10 +4,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import org.example.objects.Booking;
 
-// TODO: Implement dates
 public class BookingPrompt implements IPrompt<Booking> {
   private final JTextField roomIdField = new JTextField();
   private final JTextField bookerNameField = new JTextField();
@@ -27,6 +28,8 @@ public class BookingPrompt implements IPrompt<Booking> {
       bookerCpfField.setText(initialData.getBookerCpf());
       bookerPhoneField.setText(initialData.getBookerPhone());
       clientCountField.setText(Integer.toString(initialData.getClientCount()));
+      bookingStartField.setText(initialData.getBookingStart().toString());
+      bookingEndField.setText(initialData.getBookingEnd().toString());
     }
 
     panel.add(new JLabel("Id do quarto:"));
@@ -62,6 +65,10 @@ public class BookingPrompt implements IPrompt<Booking> {
     booking.setBookerCpf(bookerCpf);
     booking.setBookerPhone(bookerPhone);
     booking.setClientCount(clientCount);
+    Date startDate = Date.valueOf(LocalDate.parse(bookingStartField.getText()));
+    booking.setBookingStart(startDate);
+    Date endDate = Date.valueOf(LocalDate.parse(bookingEndField.getText()));
+    booking.setBookingEnd(endDate);
 
     return booking;
   }
