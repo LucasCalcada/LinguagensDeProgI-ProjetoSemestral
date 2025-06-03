@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import java.awt.GridLayout;
 
 import org.example.objects.Room;
+import org.example.objects.Room.RoomStatus;
 
 public class RoomPrompt implements IPrompt<Room> {
   private final JTextField roomNameField = new JTextField();
@@ -20,7 +21,8 @@ public class RoomPrompt implements IPrompt<Room> {
 
     if (initialData != null) {
       roomNameField.setText(initialData.getRoomName());
-      dailyRateField.setText(Integer.toString(initialData.getDailyRate()));
+      double dailyRate = initialData.getDailyRate();
+      dailyRateField.setText(Double.toString(dailyRate));
       singleBedCountField.setText(Integer.toString(initialData.getSingleBedCount()));
       doubleBedCountField.setText(Integer.toString(initialData.getDoubleBedCount()));
       statusField.setText(initialData.getStatus().toString());
@@ -42,8 +44,11 @@ public class RoomPrompt implements IPrompt<Room> {
 
   @Override
   public Room getData() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getData'");
+    String roomName = roomNameField.getText();
+    double dailyRate = (int) Double.parseDouble(dailyRateField.getText()) * 100.0;
+    int singleBedCount = Integer.parseInt(singleBedCountField.getText());
+    int doubleBedCount = Integer.parseInt(doubleBedCountField.getText());
+    RoomStatus status = RoomStatus.valueOf(statusField.toString());
+    return new Room(roomName, (int) dailyRate, singleBedCount, doubleBedCount, status);
   }
-
 }
