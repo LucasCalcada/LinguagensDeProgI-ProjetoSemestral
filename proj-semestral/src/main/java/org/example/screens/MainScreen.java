@@ -13,7 +13,7 @@ import org.example.screens.prompts.*;
 import org.example.database.operations.*;
 
 public class MainScreen extends JFrame {
-  Dashboard<Booking> bookingDash = new Dashboard<Booking>(Booking.class, new BookingPrompt(), new BookingOperations());
+  Dashboard<Booking> bookingDash = new BookingsDashboard();
   Dashboard<Product> productDash = new Dashboard<Product>(Product.class, new ProductPrompt(), new ProductOperations());
   Dashboard<Room> roomDash = new Dashboard<Room>(Room.class, new RoomPrompt(), new RoomOperations());
   Dashboard<Sale> saleDash = new Dashboard<Sale>(Sale.class, new SalePrompt(), new SaleOperations());

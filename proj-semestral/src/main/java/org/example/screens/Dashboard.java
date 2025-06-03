@@ -63,7 +63,7 @@ public class Dashboard<T extends DataObject> extends JPanel {
     repaint();
   }
 
-  private int promptId() {
+  protected int promptId() {
     String input = JOptionPane.showInputDialog(null, "Digite o id:");
     return Integer.parseInt(input);
   }
