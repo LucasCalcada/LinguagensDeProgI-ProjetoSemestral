@@ -20,7 +20,7 @@ public class ProductPrompt implements IPrompt<Product> {
     if (initialData != null) {
       nameField.setText(initialData.getProductName());
 
-      double price = initialData.getSellPrice() / 100;
+      double price = (double) initialData.getSellPrice() / 100;
       priceField.setText(Double.toString(price));
 
       activeCheckbox.setSelected(initialData.isActive());
@@ -42,10 +42,10 @@ public class ProductPrompt implements IPrompt<Product> {
     String productName = nameField.getText();
 
     String priceStr = priceField.getText();
-    int price = (int) Double.parseDouble(priceStr) * 100;
+    double price = Double.parseDouble(priceStr) * 100.0;
 
     boolean active = activeCheckbox.isSelected();
 
-    return new Product(productName, price, active);
+    return new Product(productName, (int) price, active);
   }
 }
