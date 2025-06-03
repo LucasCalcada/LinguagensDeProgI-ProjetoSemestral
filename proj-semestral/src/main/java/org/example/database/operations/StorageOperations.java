@@ -3,6 +3,8 @@ package org.example.database.operations;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.example.database.entities.DbEntity;
 import org.example.database.mappers.StorageEntryMapper;
@@ -82,6 +84,25 @@ public class StorageOperations extends Operation<StorageEntry> {
       PreparedStatement stm = conn.prepareStatement(sql);
       stm.setInt(1, id);
       stm.executeUpdate();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public DbEntity<StorageEntry>[] list() {
+    String sql = "SELECT * FROM storage_entries";
+    try {
+      PreparedStatement stm = conn.prepareStatement(sql);
+      ResultSet rs = stm.executeQuery();
+      List<DbEntity<StorageEntry>> results = new ArrayList<>();
+      while (rs.next()) {
+        StorageEntry entry = StorageEntryMapper.Instance.map(rs);
+        DbEntity<StorageEntry> row = new DbEntity<StorageEntry>(rs.getInt("id"), entry);
+        results.add(row);
+      }
+      return results.toArray(new DbEntity[0]);
+
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

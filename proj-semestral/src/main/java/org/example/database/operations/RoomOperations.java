@@ -2,6 +2,8 @@ package org.example.database.operations;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.ResultSet;
 
 import org.example.database.entities.DbEntity;
@@ -86,6 +88,25 @@ public class RoomOperations extends Operation<Room> {
       PreparedStatement stm = conn.prepareStatement(sql);
       stm.setInt(1, id);
       stm.executeUpdate();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public DbEntity<Room>[] list() {
+    String sql = "SELECT * FROM rooms";
+    try {
+      PreparedStatement stm = conn.prepareStatement(sql);
+      ResultSet rs = stm.executeQuery();
+      List<DbEntity<Room>> results = new ArrayList<>();
+      while (rs.next()) {
+        Room entry = RoomMapper.Instance.map(rs);
+        DbEntity<Room> row = new DbEntity<Room>(rs.getInt("id"), entry);
+        results.add(row);
+      }
+      return results.toArray(new DbEntity[0]);
+
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

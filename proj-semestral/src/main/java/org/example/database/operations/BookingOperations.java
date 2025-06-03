@@ -3,6 +3,8 @@ package org.example.database.operations;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.example.database.entities.DbEntity;
 import org.example.database.mappers.BookingMapper;
@@ -90,6 +92,25 @@ public class BookingOperations extends Operation<Booking> {
       PreparedStatement stm = conn.prepareStatement(sql);
       stm.setInt(1, id);
       stm.executeUpdate();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public DbEntity<Booking>[] list() {
+    String sql = "SELECT * FROM bookings";
+    try {
+      PreparedStatement stm = conn.prepareStatement(sql);
+      ResultSet rs = stm.executeQuery();
+      List<DbEntity<Booking>> results = new ArrayList<>();
+      while (rs.next()) {
+        Booking entry = BookingMapper.Instance.map(rs);
+        DbEntity<Booking> row = new DbEntity<Booking>(rs.getInt("id"), entry);
+        results.add(row);
+      }
+      return results.toArray(new DbEntity[0]);
+
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

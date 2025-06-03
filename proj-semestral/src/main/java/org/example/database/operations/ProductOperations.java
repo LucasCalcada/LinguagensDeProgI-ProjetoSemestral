@@ -3,6 +3,8 @@ package org.example.database.operations;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.example.database.entities.DbEntity;
 import org.example.database.mappers.ProductMapper;
@@ -82,6 +84,25 @@ public class ProductOperations extends Operation<Product> {
       PreparedStatement stm = conn.prepareStatement(sql);
       stm.setInt(1, id);
       stm.executeUpdate();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @Override
+  public DbEntity<Product>[] list() {
+    String sql = "SELECT * FROM products";
+    try {
+      PreparedStatement stm = conn.prepareStatement(sql);
+      ResultSet rs = stm.executeQuery();
+      List<DbEntity<Product>> results = new ArrayList<>();
+      while (rs.next()) {
+        Product entry = ProductMapper.Instance.map(rs);
+        DbEntity<Product> row = new DbEntity<Product>(rs.getInt("id"), entry);
+        results.add(row);
+      }
+      return results.toArray(new DbEntity[0]);
+
     } catch (Exception e) {
       throw new RuntimeException(e);
     }
