@@ -15,7 +15,7 @@ public class ProductPrompt implements IPrompt<Product> {
 
   @Override
   public JPanel buildPrompt(Product initialData) {
-    JPanel panel = new JPanel(new GridLayout(3, 3));
+    JPanel panel = new JPanel(new GridLayout(3, 2));
 
     if (initialData != null) {
       nameField.setText(initialData.getProductName());
